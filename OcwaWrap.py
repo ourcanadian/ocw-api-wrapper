@@ -1,4 +1,5 @@
 import requests
+import os
 
 SINGLE_ATTRS = [
     "authorEmail",
@@ -34,9 +35,6 @@ class OcwaWrap:
             self.headers = {'Authorization': 'Bearer %s' % api_token}
         self.slack_url = slack_url
 
-    def hello_world(self):
-        return "Hello World"
-
     def sendQuery(self, query):
         if(self.headers):
             return requests.post(url=self.url, json=query, headers=self.headers).json()
@@ -54,10 +52,10 @@ class OcwaWrap:
         response = self.sendQuery({ 'query' : ' { pages { single(id: '+str(id)+') { '+attributes+'} } }' })
         return response
 
-    # def log(self, msg):
-    #     if(self.slack_url):
-    #         command = os.popen('''curl -X POST -H 'Content-type: application/json' --data '{"text":"'''+msg+'''"}' '''+self.slack_url)
-    #         print(command.read())
-    #         print(command.close())
-    #     else:
-    #         print(msg)
+    def slack(self, msg):
+        if(self.slack_url):
+            command = os.popen('''curl -X POST -H 'Content-type: application/json' --data '{"text":"'''+msg+'''"}' '''+self.slack_url)
+            print(command.read())
+            print(command.close())
+        else:
+            raise Exception("No access to slack messaging, must have SLACK_URL")
