@@ -1,6 +1,7 @@
 from OcwaWrap import OcwaWrap
 import json
 import os
+import sys
 
 def main():
     query = {
@@ -34,6 +35,7 @@ def main():
                         title
                         updatedAt
                     }
+                    title
                     updatedAt
                 } 
             }
@@ -41,13 +43,16 @@ def main():
     '''
     }
 
-    if('OCWA_TOKEN' in os.environ.keys()):
+    if(len(sys.argv) > 1 and sys.argv[1] in os.environ.keys()):
+        API_TOKEN = os.environ[sys.argv[1]]
+    elif('OCWA_TOKEN' in os.environ.keys()):
         API_TOKEN = os.environ['OCWA_TOKEN']
     else:
         print("---")
         print("Token missing from enviroment variables.")
         print("Please ensure the variable is named:")
-        print("\tOCWA_TOKEN")
+        print("OCWA_TOKEN or enter another name as an arguement:")
+        print("```python3 test-token.py VAR_NAME```")
         print("---")
         return
 

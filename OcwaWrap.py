@@ -1,5 +1,29 @@
 import requests
 
+SINGLE_ATTRS = [
+    "authorEmail",
+    "authorId",
+    "authorName",
+    "content",
+    "contentType",
+    "createdAt",
+    "creatorEmail",
+    "creatorId",
+    "creatorName",
+    "description",
+    "editor",
+    "id",
+    "isPublished",
+    "isPrivate",
+    "path",
+    "privateNS",
+    "publishEndDate",
+    "publishStartDate",
+    "render",
+    "title",
+    "updatedAt"
+]
+
 class OcwaWrap:
 
     url = 'https://wiki.ourcanadian.ca/graphql'
@@ -19,14 +43,16 @@ class OcwaWrap:
         else:
             return requests.post(url=self.url, json=query).json()
 
-    # def sendSingleQuery(self, id, attr):
-    #     id = str(id)
-    #     response = self.sendQuery({ 'query' : ' { pages { single(id: '+id+') { '+attr+' } } }' })
-    #     if('errors' in response.keys()):
-    #         for error in response['errors']:
-    #             print("(id="+id+")", error['message'])
-    #         return None
-    #     return response['data']['pages']['single']
+    def sendSingleQuery(self, id, called_attrs):
+        attributes = ""
+        for attr in called_attrs:
+            if attr in SINGLE_ATTRS:
+                attributes += attr+" "
+            else:
+                raise Exception("Invalid attribute: "+attr)
+
+        response = self.sendQuery({ 'query' : ' { pages { single(id: '+str(id)+') { '+attributes+'} } }' })
+        return response
 
     # def log(self, msg):
     #     if(self.slack_url):
