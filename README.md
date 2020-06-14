@@ -21,9 +21,22 @@ Check to make sure everything worked by running a connection test.
 python3 test-connection.py
 ```
 
-In order to get to the good stuff, you will need an API Token, which can only be created by an admin. Request an API Token from an admin or via rylancole@ourcanadian.ca. Once you have an API Token, it must be securely stored as an eviroment variable. I will detail how to do this on a UNIX system.
+In order to get to the good stuff, you will need an API Token, which can only be created by an admin. Request an API Token from an admin or via rylancole@ourcanadian.ca. Once you have an API Token, it must be securely stored as an eviroment variable. This is different dependant on what system you are on.
 
-Write the the ```.bashrc``` file.
+### zsh (Up-to-date Mac):
+Write to the ```.zshenv``` file.
+```
+vim ~/.zshenv
+```
+
+Add the export line, replacing ```YOUR_API_TOKEN``` with your API Token.
+```
+export OCWA_TOKEN="YOUR_API_TOKEN"
+```
+You can use a name other than ```OCWA_TOKEN```, just be sure to remember it for later.
+
+### bash (UNIX, i.e. Linux or old-versioned Mac)
+Write to the ```.bashrc``` file.
 ```
 vim ~/.bashrc
 ```
@@ -38,6 +51,13 @@ Refresh.
 ```
 source ~/.bashrc
 ```
+
+### MDOS (Windows)
+
+Honestly, I don't know.
+
+
+
 
 Now you can test that your API Token.
 ```
