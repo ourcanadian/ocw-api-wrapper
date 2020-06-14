@@ -7,7 +7,7 @@ To install and use this Ocwa you need have [git](https://git-scm.com/downloads),
 
 Open your command terminal in the directory in which you would like to Ocwa and clone the repo.
 ```
-git clone url
+git clone https://github.com/rylancole/ocw-api-wrapper.git
 ```
 
 Enter the repo and install the neccassary libraries.
