@@ -1,4 +1,5 @@
-# ocw-api-wrapper
+# ocwa-wrapper
+## Our Canadian Wiki APi Wrapper
 
 This is an API Wrapper for GraphQL access to [Our Canadian Wiki](https://wiki.ourcanadian.ca).
 
@@ -56,7 +57,16 @@ source ~/.bashrc
 
 ### MDOS (Windows):
 
-Honestly, I don't know.
+Start by closing Command Prompt.
+
+In the naviagtion bar, search "Edit the system environment variables" and select the option.
+
+Under the "Advanced" tab, click on the "Environment Variables..." button.
+
+Create a new System variable by clicking the "New..." button. This System Environment variable will be your token. Name the Variable name: OCWA_TOKEN, or you can use a different name, just be sure to remember it for later. Then set the Variable value to the Token given to you by the administation upon your request.
+Click "OK" and then click "OK" in the Advanced tab.
+
+Reopen Command Prompt and navigate yourself to the resently clone github repository "ocw-api-wrapper".
 
 ---
 
