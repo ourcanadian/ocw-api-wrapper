@@ -1,4 +1,4 @@
-from OcwaWrap import OcwaWrap
+import OcwaWrap as ocwa
 import json
 
 def main():
@@ -25,7 +25,7 @@ def main():
     '''
     }
 
-    wrapper = OcwaWrap()
+    wrapper = ocwa.Wrapper()
     response = wrapper.sendQuery(query)
     if('errors' in response.keys()):
         print("---")

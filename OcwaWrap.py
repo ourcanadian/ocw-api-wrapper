@@ -25,7 +25,7 @@ SINGLE_ATTRS = [
     "updatedAt"
 ]
 
-class OcwaWrap:
+class Wrapper:
 
     url = 'https://wiki.ourcanadian.ca/graphql'
     headers = None

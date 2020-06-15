@@ -1,4 +1,4 @@
-from OcwaWrap import OcwaWrap
+import OcwaWrap as ocwa
 import os
 import sys
 
@@ -17,7 +17,7 @@ def main():
         print("---")
         return
 
-    wrapper = OcwaWrap(slack_url=SLACK_URL)
+    wrapper = ocwa.Wrapper(slack_url=SLACK_URL)
     response = wrapper.slack("Hello World")
 
     print("---")

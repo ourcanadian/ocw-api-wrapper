@@ -1,4 +1,4 @@
-from OcwaWrap import OcwaWrap
+import OcwaWrap as ocwa
 import json
 import os
 import sys
@@ -18,7 +18,7 @@ def main():
         print("---")
         return
 
-    wrapper = OcwaWrap(API_TOKEN)
+    wrapper = ocwa.Wrapper(API_TOKEN)
     page = wrapper.createPage(2)
 
     page.getAuthorEmail()
