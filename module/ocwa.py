@@ -199,7 +199,3 @@ class Content:
                 self.url = match.groups(1)[0]
 
         return self.url
-    
-
-
-
