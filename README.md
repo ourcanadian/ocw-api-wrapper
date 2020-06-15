@@ -1,5 +1,5 @@
 # ocwa-wrapper
-## Our Canadian Wiki APi Wrapper
+### Our Canadian Wiki API Wrapper
 
 This is an API Wrapper for GraphQL access to [Our Canadian Wiki](https://wiki.ourcanadian.ca).
 
