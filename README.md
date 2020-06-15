@@ -12,7 +12,7 @@ git clone https://github.com/ourcanadian/ocwa-wrapper.git
 
 Enter the repo and install the neccassary libraries.
 ```
-cd ocw-api-wrapper
+cd ocwa-wrapper
 pip3 install -r requirements.txt
 ```
 
