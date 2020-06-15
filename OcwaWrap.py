@@ -1,5 +1,6 @@
 import requests
 import os
+import re
 
 SINGLE_ATTRS = [
     "authorEmail",
@@ -57,6 +58,25 @@ class Wrapper:
         if('data' in response.keys()):
             if('pages' in response['data'].keys() and 'single' in response['data']['pages'].keys()):
                 return Page(response['data']['pages']['single'])
+            else:
+                raise Exception("Issue accessing page data.")
+        elif('errors' in response.keys() and len(response['errors']) > 0 and 'message' in response['errors'][0].keys()):
+            raise Exception(response['errors'][0]['message']) 
+        else:
+            raise Exception("Unkown error")
+
+    def createContent(self, id):
+        attrs = [
+            'content',
+            'description',
+            'id',
+            'path',
+            'title',
+        ]
+        response = self.sendSingleQuery(id, attrs)
+        if('data' in response.keys()):
+            if('pages' in response['data'].keys() and 'single' in response['data']['pages'].keys()):
+                return Content(response['data']['pages']['single'])
             else:
                 raise Exception("Issue accessing page data.")
         elif('errors' in response.keys() and len(response['errors']) > 0 and 'message' in response['errors'][0].keys()):
@@ -145,3 +165,41 @@ class Page:
 
     def getUpdatedAt(self):
         return self.get("updatedAt")
+
+class Content:
+
+    url = None
+
+    def __init__(self, pageObject):
+        self.content = pageObject['content']
+        self.description = pageObject['description']
+        self.id = pageObject['id']
+        self.path = pageObject['path']
+        self.title = pageObject['title']
+
+    def getContent(self):
+        return self.content
+
+    def getDescription(self):
+        return self.description
+
+    def getId(self):
+        return self.id
+
+    def getPath(self):
+        return self.path
+
+    def getTitle(self):
+        return self.title
+
+    def getUrl(self):
+        if(not self.url):
+            match = re.match('> (.*)\s', self.content)
+            if(match):
+                self.url = match.groups(1)[0]
+
+        return self.url
+    
+
+
+
