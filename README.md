@@ -16,12 +16,23 @@ cd ocwa-wrapper
 pip3 install -r requirements.txt
 ```
 
-Enter the module and run the connection test.
+Start up a python3 interpretor    
+Mac and Linux:
 ```
-cd module
-make test TEST="connection"
+python3
+```
+Windows:
+```
+py
+```
+Run a connection test
+```
+>>> import ocwa
+>>> ocwa.test_connection()
 ```
 
+If you run `ocwa.tests()` you can see there are other tests you can run.  
+  
 In order to get to the good stuff, you will need an API Token, which can only be created by an admin. Request an API Token from an admin or via rylancole@ourcanadian.ca. Once you have an API Token, it must be securely stored as an eviroment variable. This is different dependant on what system you are on.
 
 ---
@@ -71,13 +82,14 @@ Reopen Command Prompt and navigate yourself to the resently clone github reposit
 ---
 
 
-Now you can test that your API Token.
+Now you can test that your API Token from within the Python interpretor
 ```
-make test TEST="token"
+>>> ocwa.test_token()
 ```
 Or if you used a name other than the default ```OCWA_TOKEN``` add it as arguement.
-
-_not yet supported_
+```
+>>> ocwa.test_token(tokenName='TOKEN_NAME')
+```
 
 
 
