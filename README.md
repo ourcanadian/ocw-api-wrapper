@@ -4,28 +4,28 @@ This is an API Wrapper for GraphQL access to [Our Canadian Wiki](https://wiki.ou
 
 To install and use this Ocwa you need have [git](https://git-scm.com/downloads), [python3](https://www.python.org/downloads/), and [pip3](https://vgkits.org/blog/pip3-windows-howto/) installed (these are all included in Mac dev-tools but will need to be added manually on Windows).
 
-
-Open your command terminal in the directory in which you would like to Ocwa and clone the repo.
+## Clone the repo
+Open your command terminal in the directory where you would like to Ocwa then clone the repo.
 ```
 git clone https://github.com/ourcanadian/ocwa-wrapper.git
 ```
 
-Enter the repo and install the neccassary libraries.
+## Install the neccassary libraries.
 ```
 cd ocwa-wrapper
 pip3 install -r requirements.txt
 ```
 
-Start up a python3 interpretor    
-Mac and Linux:
+## Start up a python3 interpretor    
+### Mac and Linux:
 ```
 python3
 ```
-Windows:
+### Windows:
 ```
 py
 ```
-Run a connection test
+## Run a connection test
 ```
 >>> import ocwa
 >>> ocwa.test_connection()
@@ -68,16 +68,16 @@ source ~/.bashrc
 
 ### MDOS (Windows):
 
-Start by closing Command Prompt.
+Start by closing Command Prompt.  
 
-In the naviagtion bar, search "Edit the system environment variables" and select the option.
+In the naviagtion bar, search "Edit the system environment variables" and select the option.  
 
-Under the "Advanced" tab, click on the "Environment Variables..." button.
+Under the "Advanced" tab, click on the "Environment Variables..." button.  
 
 Create a new System variable by clicking the "New..." button. This System Environment variable will be your token. Name the Variable name: OCWA_TOKEN, or you can use a different name, just be sure to remember it for later. Then set the Variable value to the Token given to you by the administation upon your request.
 Click "OK" and then click "OK" in the Advanced tab.
 
-Reopen Command Prompt and navigate yourself to the resently clone github repository "ocw-api-wrapper".
+Reopen Command Prompt and navigate yourself to the recently cloned github repository "ocwa-wrapper".
 
 ---
 
