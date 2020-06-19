@@ -56,13 +56,13 @@ class Wrapper:
 
     def createPage(self, id, called_attrs=SINGLE_ATTRS):
         response = self.sendSingleQuery(id, called_attrs)
-        if('data' in response.keys()):
+        if('errors' in response.keys() and len(response['errors']) > 0 and 'message' in response['errors'][0].keys()):
+            raise Exception(response['errors'][0]['message']) 
+        elif('data' in response.keys()):
             if('pages' in response['data'].keys() and 'single' in response['data']['pages'].keys()):
                 return Page(response['data']['pages']['single'])
             else:
                 raise Exception("Issue accessing page data.")
-        elif('errors' in response.keys() and len(response['errors']) > 0 and 'message' in response['errors'][0].keys()):
-            raise Exception(response['errors'][0]['message']) 
         else:
             raise Exception("Unkown error")
 
@@ -75,13 +75,13 @@ class Wrapper:
             'title',
         ]
         response = self.sendSingleQuery(id, attrs)
-        if('data' in response.keys()):
+        if('errors' in response.keys() and len(response['errors']) > 0 and 'message' in response['errors'][0].keys()):
+            raise Exception(response['errors'][0]['message']) 
+        elif('data' in response.keys()):
             if('pages' in response['data'].keys() and 'single' in response['data']['pages'].keys()):
                 return Content(response['data']['pages']['single'])
             else:
                 raise Exception("Issue accessing page data.")
-        elif('errors' in response.keys() and len(response['errors']) > 0 and 'message' in response['errors'][0].keys()):
-            raise Exception(response['errors'][0]['message']) 
         else:
             raise Exception("Unkown error")
 
